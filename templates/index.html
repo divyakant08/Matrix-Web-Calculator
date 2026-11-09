@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix Solver - Linear Algebra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Matrix Solver</h1>
+        </header>
+
+        <form method="POST" class="main-layout">
+            <!-- Left Panel: Inputs -->
+            <div class="input-section">
+                <h3>Matrix Inputs</h3>
+                
+                <label>Matrix A (Row-wise, space-separated):</label>
+                <textarea name="matrix_a" rows="6" placeholder="1 2 3&#10;4 5 6">{{ matrix_a }}</textarea>
+
+                <label>Matrix B / Constants Vector:</label>
+                <textarea name="matrix_b" rows="5" placeholder="1&#10;2">{{ matrix_b }}</textarea>
+
+                <label>Scalar Value (k):</label>
+                <input type="text" name="scalar" value="{{ scalar or '2' }}">
+            </div>
+
+            <!-- Right Panel: Operations -->
+            <div class="ops-section">
+                <h3>Operations & Properties</h3>
+                <button type="submit" name="operation" value="properties" class="btn-primary">🔍 Check Matrix A Properties</button>
+                
+                <div class="btn-grid">
+                    <button type="submit" name="operation" value="add">Addition (A + B)</button>
+                    <button type="submit" name="operation" value="sub">Subtraction (A - B)</button>
+                    <button type="submit" name="operation" value="mul">Multiplication (A * B)</button>
+                    <button type="submit" name="operation" value="scalar">Scalar Mult (k * A)</button>
+                    <button type="submit" name="operation" value="transpose">Transpose (A^T)</button>
+                    <button type="submit" name="operation" value="determinant">Determinant (|A|)</button>
+                    <button type="submit" name="operation" value="inverse">Inverse (A^-1)</button>
+                    <button type="submit" name="operation" value="trace">Trace (Tr(A))</button>
+                    <button type="submit" name="operation" value="eigen">Eigenvalues & Vectors</button>
+                    <button type="submit" name="operation" value="rank">Rank of Matrix</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Error / Result Alerts -->
+        {% if error_msg %}
+            <div class="alert error">{{ error_msg }}</div>
+        {% endif %}
+
+        {% if result_output %}
+            <div class="result-section">
+                <h3>=== {{ result_title }} ===</h3>
+                <pre>{{ result_output }}</pre>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
