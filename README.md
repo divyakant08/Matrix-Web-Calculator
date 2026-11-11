@@ -45,8 +45,8 @@ Follow these steps to run the project locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/divyakant08/flask-numpy-matrix-calculator.git
-cd Matrix-Solver
+git clone https://github.com/divyakant08/Matrix-Web-Calculator.git
+cd Matrix-Web-Calculator
 ```
 
 ### 2. Create a Virtual Environment
